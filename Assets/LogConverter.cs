@@ -78,10 +78,8 @@ public class LogConverter : MonoBehaviour {
             Quaternion leftQuaternion_ = new Quaternion(Convert.ToSingle(leftQuaternion[0]), Convert.ToSingle(leftQuaternion[1]),
                                                         Convert.ToSingle(leftQuaternion[2]), Convert.ToSingle(leftQuaternion[3]));
 
-            //currentLineOut += "\t" + leftQuaternion_.eulerAngles.x + "\t" + leftQuaternion_.eulerAngles.y + "\t"
-            //               + leftQuaternion_.eulerAngles.z + "\t" + currentLine[7];
-
             // map orientations from -180 to 180 instead of 0 to 360
+            // (this makes plotting them nicer, as small movements from 359 to 1 are not represented as huge changes on the plot)
             currentLineOut += "\t" + (leftQuaternion_.eulerAngles.x > 180 ? (leftQuaternion_.eulerAngles.x - 360) : leftQuaternion_.eulerAngles.x)
                            + "\t" + (leftQuaternion_.eulerAngles.y > 180 ? (leftQuaternion_.eulerAngles.y - 360) : leftQuaternion_.eulerAngles.y)
                            + "\t" + (leftQuaternion_.eulerAngles.z > 180 ? (leftQuaternion_.eulerAngles.z - 360) : leftQuaternion_.eulerAngles.z)
